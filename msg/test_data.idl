@@ -1,0 +1,34 @@
+module bm_test
+{
+  @final
+  struct TestParameter
+  {
+    uint64 seq;
+    uint64 timestamp;
+    string baggage;
+  };
+
+  @final
+  struct TestData
+  {
+    uint64 seq;
+    uint64 timestamp;
+    string baggage;
+  };
+
+  @final
+  struct TestFixedParameter
+  {
+    uint64 seq;
+    uint64 timestamp;
+    octet  baggage[1024];
+  };
+
+  @final
+  struct TestFixedData
+  {
+    uint64 seq;
+    uint64 timestamp;
+    octet  baggage[1024];
+  };
+};
