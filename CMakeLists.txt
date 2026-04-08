@@ -62,7 +62,7 @@ endif()
 set(DDS_RUN_LIBS ddsc ddscxx rt pthread)
 
 
-add_subdirectory(src)
+add_subdirectory(examples)
 # add_subdirectory(utils)
 
 
