@@ -40,18 +40,4 @@ install(TARGETS raw_talker raw_listener
 )
 
 
-## Install thirdparty .so libraries from 3RD_LIBRARY_DIRS (per-architecture)
-## Use PROGRAMS to preserve symlinks and file permissions
-foreach(_lib_dir IN LISTS 3RD_LIBRARY_DIRS)
-    if(EXISTS "${_lib_dir}")
-        # Get all .so files (including symlinks) in the directory
-        file(GLOB _so_files "${_lib_dir}/*.so" "${_lib_dir}/*.so.*")
-        if(_so_files)
-            install(
-                FILES ${_so_files}
-                DESTINATION lib
-            )
-        endif()
-    endif()
-endforeach()
 

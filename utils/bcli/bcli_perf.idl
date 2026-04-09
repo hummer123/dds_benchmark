@@ -1,0 +1,83 @@
+/*
+ * bcli_data.idl - Message definitions for bcli benchmark tool
+ *
+ * Compile with: idlc -l cxx -S -d <output_dir> bcli_data.idl
+ */
+
+module bcli
+{
+    // -----------------------------------------------------------------------------
+    // 1. 最小基准组 
+    // -----------------------------------------------------------------------------
+
+    @final
+    struct Perf4 {
+        unsigned long seq; 
+    };
+
+    @final
+    struct Perf16 {
+        unsigned long seq; 
+        octet data[12];
+    };
+
+
+    // -----------------------------------------------------------------------------
+    // 2. 多种 Payload 组（测试不同消息大小）
+    // -----------------------------------------------------------------------------
+    
+    @final
+    struct Perf256 {
+        unsigned long seq;
+        octet data[252]; 
+    };
+
+    @final
+    struct Perf1K {
+        unsigned long seq; 
+        octet data[1020];
+    };
+
+    @final
+    struct Perf64K {
+        unsigned long seq; 
+        octet data[65532];
+    };
+
+
+    // -----------------------------------------------------------------------------
+    // 3. 动态Payload组（测试可变长消息） 
+    // -----------------------------------------------------------------------------
+
+    @final
+    struct PerfDynamic {
+        unsigned long seq;
+        sequence<octet> payload;
+    };
+
+
+    // -----------------------------------------------------------------------------
+    // 4. 时序数据组（模拟传感器/日志）
+    // -----------------------------------------------------------------------------
+
+    @final
+    struct PerfTimeseries {
+        unsigned long seq;
+        long long timestamp_ns;
+        double values[8];
+        octet quality;
+    };
+
+
+    // -----------------------------------------------------------------------------
+    // 5. 批量传输组（测试批量优化）
+    // -----------------------------------------------------------------------------
+    
+    @final
+    struct PerfBatch {
+        unsigned long batch_id;
+        unsigned long item_count;
+        sequence<octet> items;
+    };
+
+};
